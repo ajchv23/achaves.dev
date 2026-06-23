@@ -1,308 +1,399 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Formación y Certificados · Alberto Chaves</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --green:#1a3a2a;--green-mid:#2d6a4f;--green-light:#52b788;
-    --purple:#2d1b4e;--purple-mid:#6d3fa0;--purple-light:#b57bee;
-    --accent:#74c69d;--accent2:#b57bee;
-    --bg:#0d0d0f;--bg2:#111318;--bg3:#181c24;
-    --text:#f0f0f0;--muted:#8a8fa8;--border:#1e2333;
-  }
-  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-  a{color:inherit;text-decoration:none}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formación y Certificados · Alberto Chaves</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --accent:    #74c69d;
+      --accent2:   #b57bee;
+      --green-mid: #2d6a4f;
+      --purple-mid:#6d3fa0;
+      --bg:        #0d0d0f;
+      --bg2:       #111318;
+      --bg3:       #181c24;
+      --text:      #f0f0f0;
+      --muted:     #8a8fa8;
+      --border:    #1e2333;
+    }
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,15,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem}
-  .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .back-link{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;transition:color .2s}
-  .back-link:hover{color:var(--accent)}
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a    { color: inherit; text-decoration: none; }
 
-  .container{max-width:900px;margin:0 auto;padding:0 2rem}
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,15,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-size: 1.1rem; font-weight: 700; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .back-link { font-size: .85rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; transition: color .2s; }
+    .back-link:hover { color: var(--accent); }
 
-  /* HEADER */
-  header{padding:9rem 2rem 4rem;position:relative;overflow:hidden}
-  header::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(45,107,79,.22) 0%,transparent 70%);pointer-events:none}
-  .header-tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);border:1px solid var(--green-mid);padding:.3rem .8rem;border-radius:20px;margin-bottom:1.25rem}
-  .header-title{font-size:clamp(2rem,4.5vw,3rem);font-weight:900;margin-bottom:1rem}
-  .header-title span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .header-sub{color:var(--muted);font-size:.95rem;max-width:560px}
+    /* HEADER */
+    header { padding: 9rem 2rem 4rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(45,107,79,.22) 0%, transparent 70%); pointer-events: none; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header-tag { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--green-mid); padding: .3rem .8rem; border-radius: 20px; margin-bottom: 1.25rem; }
+    .header-title { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
+    .header-title span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .header-sub { color: var(--muted); font-size: .95rem; max-width: 560px; }
+    .summary-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .stat-val   { font-size: 1.7rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
 
-  .summary-stats{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
-  .stat-val{font-size:1.7rem;font-weight:700;color:var(--accent)}
-  .stat-label{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+    /* MAIN */
+    main { padding: 2rem 2rem 6rem; }
+    .cert-list { display: flex; flex-direction: column; gap: 1.5rem; }
 
-  /* CERT LIST */
-  main{padding:1rem 2rem 6rem}
-  .cert-list{display:flex;flex-direction:column;gap:1.5rem}
-  .cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color .2s;display:flex;gap:1.75rem}
-  .cert-card:hover{border-color:var(--green-mid)}
+    /* CARD */
+    .cert-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.75rem; transition: border-color .2s; }
+    .cert-card:hover { border-color: var(--green-mid); }
 
-  /* THUMBNAIL */
-  .cert-thumb-wrap{flex-shrink:0;width:120px}
-  .cert-thumb{width:120px;height:155px;border-radius:10px;object-fit:cover;border:1px solid var(--border);display:block}
+    /* THUMBNAIL */
+    .cert-thumb-wrap { flex-shrink: 0; width: 120px; }
+    .cert-thumb { width: 120px; height: 155px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); display: block; }
 
-  .cert-body{flex:1;min-width:0}
-  .cert-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:.85rem}
-  .cert-platform{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.4rem}
-  .cert-name{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
-  .cert-year{font-size:.8rem;color:var(--muted)}
-  .cert-status{flex-shrink:0;font-size:.7rem;padding:.3rem .8rem;border-radius:20px;background:rgba(116,198,157,.1);color:var(--accent);border:1px solid rgba(116,198,157,.2);white-space:nowrap}
-  .cert-desc{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:1.1rem}
-  .cert-skills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:0}
-  .tag{font-size:.72rem;background:rgba(116,198,157,.1);color:var(--accent);border:1px solid rgba(116,198,157,.2);padding:.25rem .7rem;border-radius:20px}
-  .tag-purple{background:rgba(181,123,238,.1);color:var(--accent2);border:1px solid rgba(181,123,238,.2)}
+    /* BODY */
+    .cert-body { flex: 1; min-width: 0; }
+    .cert-top  { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: .85rem; }
+    .cert-platform { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent2); margin-bottom: .4rem; }
+    .cert-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .3rem; }
+    .cert-year { font-size: .8rem; color: var(--muted); }
+    .cert-desc { color: var(--muted); font-size: .88rem; line-height: 1.8; margin-bottom: 1rem; }
 
-  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+    /* BADGES */
+    .badge { flex-shrink: 0; font-size: .7rem; padding: .3rem .8rem; border-radius: 20px; white-space: nowrap; }
+    .badge-done { background: rgba(116,198,157,.1); color: var(--accent);  border: 1px solid rgba(116,198,157,.2); }
+    .badge-prog { background: rgba(181,123,238,.1); color: var(--accent2); border: 1px solid rgba(181,123,238,.2); }
 
-  @media(max-width:600px){
-    .summary-stats{gap:1.5rem;flex-wrap:wrap}
-    .cert-card{padding:1.25rem;flex-direction:column}
-    .cert-thumb-wrap{width:100%}
-    .cert-thumb{width:100px;height:130px}
-  }
-</style>
+    /* TAGS */
+    .cert-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag        { font-size: .72rem; padding: .25rem .7rem; border-radius: 20px; background: rgba(116,198,157,.1); color: var(--accent);  border: 1px solid rgba(116,198,157,.2); }
+    .tag-purple { background: rgba(181,123,238,.1); color: var(--accent2); border: 1px solid rgba(181,123,238,.2); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .summary-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .cert-card     { flex-direction: column; padding: 1.25rem; }
+      .cert-thumb-wrap { width: 100%; }
+      .cert-thumb    { width: 100px; height: 130px; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <span class="logo">achaves.dev</span>
-    <a href="index.html" class="back-link">← Volver al inicio</a>
-  </div>
-</nav>
-
-<header>
-  <div class="container">
-    <div class="header-tag">Educación continua</div>
-    <h1 class="header-title">Formación &amp; <span>Certificados</span></h1>
-    <p class="header-sub">Un registro detallado de mi formación académica y profesional: desde mi base universitaria hasta certificaciones especializadas que he completado a lo largo de mi carrera.</p>
-    <div class="summary-stats">
-      <div><div class="stat-val">8</div><div class="stat-label">Certificados &amp; cursos</div></div>
-      <div><div class="stat-val">1</div><div class="stat-label">Título universitario</div></div>
-      <div><div class="stat-val">2019–2026</div><div class="stat-label">Rango de años</div></div>
+  <nav>
+    <div class="nav-inner">
+      <span class="logo">achaves.dev</span>
+      <a href="index.html" class="back-link">← Volver al inicio</a>
     </div>
-  </div>
-</header>
+  </nav>
 
-<main>
-  <div class="container">
-    <div class="cert-list" id="certList">
-
-      <!-- 1. Bachillerato - siempre primero -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_bachillerato.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_bachillerato.png" alt="Certificado Bachillerato en Computación"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Instituto Tecnológico de Costa Rica (TEC) — Sede Santa Clara</div>
-              <div class="cert-name">Bachillerato en Computación</div>
-              <div class="cert-year">Título universitario · 2011</div>
-            </div>
-            <span class="cert-status">✓ Graduado</span>
-          </div>
-          <p class="cert-desc">Formación universitaria base en ingeniería de sistemas y ciencias de la computación, cursada en el Instituto Tecnológico de Costa Rica. El programa cubrió fundamentos de programación, estructuras de datos, algoritmos, bases de datos, redes y arquitectura de software — la base sobre la cual construí mi carrera profesional de 14 años en desarrollo de software.</p>
-          <div class="cert-skills">
-            <span class="tag">Fundamentos de Programación</span>
-            <span class="tag">Estructuras de Datos</span>
-            <span class="tag tag-purple">Bases de Datos</span>
-            <span class="tag tag-purple">Arquitectura de Software</span>
-          </div>
-        </div>
+  <header>
+    <div class="container">
+      <div class="header-tag">Educación continua</div>
+      <h1 class="header-title">Formación &amp; <span>Certificados</span></h1>
+      <p class="header-sub">Un registro detallado de mi formación académica y profesional: desde mi base universitaria hasta certificaciones especializadas completadas a lo largo de mi carrera.</p>
+      <div class="summary-stats">
+        <div><div class="stat-val">11</div><div class="stat-label">Certificados &amp; cursos</div></div>
+        <div><div class="stat-val">1</div><div class="stat-label">Título universitario</div></div>
+        <div><div class="stat-val">2019–2026</div><div class="stat-label">Rango de años</div></div>
       </div>
-
-      <!-- 2. Master of Claude - 2026 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_ia_claude.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_ia_claude.png" alt="Certificado Master of Claude"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Coursiv</div>
-              <div class="cert-name">Master of Claude</div>
-              <div class="cert-year">2026</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Curso especializado en el uso avanzado de Claude como herramienta de productividad y desarrollo, cubriendo prompting efectivo, integración en flujos de trabajo técnicos y aprovechamiento de IA generativa para acelerar tareas de programación y automatización.</p>
-          <div class="cert-skills">
-            <span class="tag">Inteligencia Artificial</span>
-            <span class="tag tag-purple">Prompt Engineering</span>
-            <span class="tag tag-purple">Productividad con IA</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Clean Code - 2024 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_clean_code.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_clean_code.png" alt="Certificado Principios SOLID y Clean Code"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Udemy · Instructor: Fernando Herrera</div>
-              <div class="cert-name">Principios SOLID y Clean Code</div>
-              <div class="cert-year">2024</div>
-            </div>
-            <span class="cert-status">✓ Certificado</span>
-          </div>
-          <p class="cert-desc">Curso especializado en los cinco principios SOLID de diseño orientado a objetos y las prácticas de Clean Code propuestas por Robert C. Martin. Profundicé en cómo escribir software mantenible, testeable y escalable, aplicando estos principios directamente en proyectos reales del sector financiero durante mi rol en Banco BCT.</p>
-          <div class="cert-skills">
-            <span class="tag">SOLID Principles</span>
-            <span class="tag">Clean Code</span>
-            <span class="tag tag-purple">Diseño OOP</span>
-            <span class="tag tag-purple">Patrones de Diseño</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Inglés - 2023 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_ingles.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_ingles.png" alt="Certificado Inglés Conversacional"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Centro Cultural Costarricense Norteamericano</div>
-              <div class="cert-name">Programa Avanzado de Inglés Conversacional</div>
-              <div class="cert-year">2023</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Programa intensivo enfocado en el desarrollo de habilidades de comunicación oral y escrita en inglés a nivel avanzado, orientado a contextos profesionales y técnicos. Fortaleció mi capacidad de comunicarme con equipos internacionales, proveedores externos y stakeholders en entornos corporativos de habla inglesa.</p>
-          <div class="cert-skills">
-            <span class="tag">Inglés Avanzado</span>
-            <span class="tag tag-purple">Comunicación Profesional</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. TypeScript - 2023 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_typescript.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_typescript.png" alt="Certificado TypeScript"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Udemy</div>
-              <div class="cert-name">TypeScript — Especialización Técnica</div>
-              <div class="cert-year">2023</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Especialización avanzada en TypeScript, cubriendo tipado estático, interfaces, tipos genéricos (generics), decoradores y patrones de diseño aplicados al ecosistema de TypeScript. Este conocimiento lo apliqué directamente en el desarrollo de componentes ReactJS/TypeScript durante mi tiempo en Banco BCT.</p>
-          <div class="cert-skills">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Generics</span>
-            <span class="tag tag-purple">Tipado Estático</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. React - 2023 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_react.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_react.png" alt="Certificado React: De Cero a Experto"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Udemy</div>
-              <div class="cert-name">React: De Cero a Experto (Hooks y MERN)</div>
-              <div class="cert-year">2023</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Curso integral de React enfocado en Hooks (useState, useEffect, useContext, custom hooks) y el stack MERN completo (MongoDB, Express, React, Node.js). Cubrió la construcción de aplicaciones full-stack modernas, manejo de estado, consumo de APIs REST y despliegue de proyectos end-to-end. Este conocimiento complementó directamente mi trabajo con componentes ReactJS/TypeScript en proyectos del sector financiero.</p>
-          <div class="cert-skills">
-            <span class="tag">React Hooks</span>
-            <span class="tag">MERN Stack</span>
-            <span class="tag tag-purple">MongoDB</span>
-            <span class="tag tag-purple">Node.js / Express</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Angular - 2021 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_angular.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_angular.png" alt="Certificado Angular"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Udemy</div>
-              <div class="cert-name">Angular: De Cero a Experto</div>
-              <div class="cert-year">2021</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Curso integral de Angular cubriendo desde fundamentos hasta temas avanzados: componentes, servicios, inyección de dependencias, RxJS, Angular Material, formularios reactivos y arquitecturas escalables para aplicaciones empresariales de página única (SPA).</p>
-          <div class="cert-skills">
-            <span class="tag">Angular</span>
-            <span class="tag">RxJS</span>
-            <span class="tag tag-purple">SPA Architecture</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8. Flutter - 2019 -->
-      <div class="cert-card">
-        <div class="cert-thumb-wrap">
-          <a href="resources/cert/cert_flutter.png" target="_blank" rel="noopener">
-            <img class="cert-thumb" src="resources/cert/cert_flutter.png" alt="Certificado Flutter SDK"/>
-          </a>
-        </div>
-        <div class="cert-body">
-          <div class="cert-top">
-            <div>
-              <div class="cert-platform">Udemy</div>
-              <div class="cert-name">Flutter SDK</div>
-              <div class="cert-year">2019</div>
-            </div>
-            <span class="cert-status">✓ Completado</span>
-          </div>
-          <p class="cert-desc">Introducción al desarrollo de aplicaciones móviles multiplataforma utilizando Flutter SDK y el lenguaje Dart. Cubrió la construcción de interfaces nativas para iOS y Android desde una única base de código, ampliando mi versatilidad técnica más allá del desarrollo web tradicional.</p>
-          <div class="cert-skills">
-            <span class="tag">Flutter</span>
-            <span class="tag">Dart</span>
-            <span class="tag tag-purple">Desarrollo Móvil</span>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</main>
+  </header>
 
-<footer>
-  <p>© 2026 <strong>Alberto Chaves Villegas</strong> · achaves.dev · Tibás, San José, Costa Rica</p>
-</footer>
+  <main>
+    <div class="container">
+      <div class="cert-list">
+
+        <!-- 1. Bachillerato TEC -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_bachillerato.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_bachillerato.png" alt="Bachillerato en Computación"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Instituto Tecnológico de Costa Rica (TEC) — Sede Santa Clara</div>
+                <div class="cert-name">Bachillerato en Computación</div>
+                <div class="cert-year">Título universitario · 2011</div>
+              </div>
+              <span class="badge badge-done">✓ Graduado</span>
+            </div>
+            <p class="cert-desc">Formación universitaria base en ingeniería de sistemas y ciencias de la computación. El programa cubrió fundamentos de programación, estructuras de datos, algoritmos, bases de datos, redes y arquitectura de software — la base sobre la cual construí mi carrera profesional de 14 años.</p>
+            <div class="cert-tags">
+              <span class="tag">Fundamentos de Programación</span>
+              <span class="tag">Estructuras de Datos</span>
+              <span class="tag tag-purple">Bases de Datos</span>
+              <span class="tag tag-purple">Arquitectura de Software</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Azure Solutions Architect - 2026 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_azure.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_azure.png" alt="Azure Solutions Architect"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">Azure Solutions Architect Certification: The Ultimate Bundle</div>
+                <div class="cert-year">2026</div>
+              </div>
+              <span class="badge badge-prog">⏳ En proceso</span>
+            </div>
+            <p class="cert-desc">Preparación integral para la certificación de Azure Solutions Architect, cubriendo diseño de arquitecturas en la nube, alta disponibilidad, seguridad, redes virtuales, almacenamiento, identidad y gobernanza en Microsoft Azure. Complementa mi experiencia práctica con Azure App Services y Azure SQL en Banco BCT.</p>
+            <div class="cert-tags">
+              <span class="tag">Microsoft Azure</span>
+              <span class="tag">Cloud Architecture</span>
+              <span class="tag tag-purple">Alta Disponibilidad</span>
+              <span class="tag tag-purple">Seguridad Cloud</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Master of DeepSeek - 2026 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_deepseek.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_deepseek.png" alt="Master of DeepSeek"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Coursiv</div>
+                <div class="cert-name">Master of DeepSeek</div>
+                <div class="cert-year">2026</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso especializado en el uso avanzado de DeepSeek como herramienta de inteligencia artificial, cubriendo sus capacidades de razonamiento, integración en flujos de trabajo técnicos y aplicación práctica para tareas de programación, análisis y automatización.</p>
+            <div class="cert-tags">
+              <span class="tag">Inteligencia Artificial</span>
+              <span class="tag tag-purple">DeepSeek</span>
+              <span class="tag tag-purple">Productividad con IA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Master of Claude - 2026 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_ia_claude.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_ia_claude.png" alt="Master of Claude"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Coursiv</div>
+                <div class="cert-name">Master of Claude</div>
+                <div class="cert-year">2026</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso especializado en el uso avanzado de Claude como herramienta de productividad y desarrollo, cubriendo prompting efectivo, integración en flujos de trabajo técnicos y aprovechamiento de IA generativa para acelerar tareas de programación y automatización.</p>
+            <div class="cert-tags">
+              <span class="tag">Inteligencia Artificial</span>
+              <span class="tag tag-purple">Prompt Engineering</span>
+              <span class="tag tag-purple">Productividad con IA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Visual Studio Code - 2024 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_vscode.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_vscode.png" alt="Visual Studio Code"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">Visual Studio Code: Mejora tu velocidad para codificar</div>
+                <div class="cert-year">2024</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso enfocado en dominar Visual Studio Code: atajos de teclado avanzados, extensiones clave, configuración del workspace, snippets personalizados y técnicas de edición que incrementan significativamente la productividad del día a día.</p>
+            <div class="cert-tags">
+              <span class="tag">VS Code</span>
+              <span class="tag">Productividad</span>
+              <span class="tag tag-purple">Dev Tools</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. SOLID y Clean Code - 2024 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_clean_code.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_clean_code.png" alt="Principios SOLID y Clean Code"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy · Instructor: Fernando Herrera</div>
+                <div class="cert-name">Principios SOLID y Clean Code</div>
+                <div class="cert-year">2024</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso especializado en los cinco principios SOLID de diseño orientado a objetos y las prácticas de Clean Code propuestas por Robert C. Martin. Aplicado directamente en proyectos del sector financiero en Banco BCT para escribir software mantenible, testeable y escalable.</p>
+            <div class="cert-tags">
+              <span class="tag">SOLID Principles</span>
+              <span class="tag">Clean Code</span>
+              <span class="tag tag-purple">Diseño OOP</span>
+              <span class="tag tag-purple">Patrones de Diseño</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Inglés - 2023 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_ingles.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_ingles.png" alt="Inglés Conversacional"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Centro Cultural Costarricense Norteamericano</div>
+                <div class="cert-name">Programa Avanzado de Inglés Conversacional</div>
+                <div class="cert-year">2023</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Programa intensivo enfocado en el desarrollo de habilidades de comunicación oral y escrita en inglés a nivel avanzado, orientado a contextos profesionales y técnicos. Fortaleció mi capacidad de comunicarme con equipos internacionales y stakeholders en entornos corporativos de habla inglesa.</p>
+            <div class="cert-tags">
+              <span class="tag">Inglés Avanzado</span>
+              <span class="tag tag-purple">Comunicación Profesional</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. TypeScript - 2023 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_typescript.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_typescript.png" alt="Typescript"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">Typescript: Tu completa guia y manual de mano</div>
+                <div class="cert-year">2023</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Guía completa de TypeScript cubriendo tipado estático, interfaces, tipos genéricos, decoradores y patrones de diseño aplicados al ecosistema TypeScript. Aplicado directamente en el desarrollo de componentes ReactJS/TypeScript en Banco BCT.</p>
+            <div class="cert-tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Generics</span>
+              <span class="tag tag-purple">Tipado Estático</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. React - 2023 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_react.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_react.png" alt="React: De cero a experto"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">React: De cero a experto</div>
+                <div class="cert-year">2023</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso integral de React enfocado en Hooks (useState, useEffect, useContext, custom hooks) y el stack MERN completo (MongoDB, Express, React, Node.js). Construcción de aplicaciones full-stack modernas, manejo de estado, consumo de APIs REST y despliegue end-to-end.</p>
+            <div class="cert-tags">
+              <span class="tag">React Hooks</span>
+              <span class="tag">MERN Stack</span>
+              <span class="tag tag-purple">MongoDB</span>
+              <span class="tag tag-purple">Node.js / Express</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Angular - 2020 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_angular.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_angular.png" alt="Angular: De cero a experto"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">Angular: De cero a experto - 2018</div>
+                <div class="cert-year">2020</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Curso integral de Angular cubriendo componentes, servicios, inyección de dependencias, RxJS, Angular Material, formularios reactivos y arquitecturas escalables para aplicaciones empresariales de página única (SPA).</p>
+            <div class="cert-tags">
+              <span class="tag">Angular</span>
+              <span class="tag">RxJS</span>
+              <span class="tag tag-purple">SPA Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Flutter - 2019 -->
+        <div class="cert-card">
+          <div class="cert-thumb-wrap">
+            <a href="resources/cert/cert_flutter.png" target="_blank" rel="noopener">
+              <img class="cert-thumb" src="resources/cert/cert_flutter.png" alt="Flutter: Una introducción al SDK de Google"/>
+            </a>
+          </div>
+          <div class="cert-body">
+            <div class="cert-top">
+              <div>
+                <div class="cert-platform">Udemy</div>
+                <div class="cert-name">Flutter: Una introducción al SDK de Google</div>
+                <div class="cert-year">2019</div>
+              </div>
+              <span class="badge badge-done">✓ Completado</span>
+            </div>
+            <p class="cert-desc">Introducción al desarrollo de aplicaciones móviles multiplataforma con Flutter SDK y Dart. Construcción de interfaces nativas para iOS y Android desde una única base de código, ampliando la versatilidad técnica más allá del desarrollo web tradicional.</p>
+            <div class="cert-tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag tag-purple">Desarrollo Móvil</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 <strong>Alberto Chaves Villegas</strong> · achaves.dev · Tibás, San José, Costa Rica</p>
+  </footer>
 
 </body>
 </html>
