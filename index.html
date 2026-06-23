@@ -1,382 +1,384 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Alberto Chaves · achaves.dev</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --green:#1a3a2a;--green-mid:#2d6a4f;--green-light:#52b788;
-    --purple:#2d1b4e;--purple-mid:#6d3fa0;--purple-light:#b57bee;
-    --accent:#74c69d;--accent2:#b57bee;
-    --bg:#0d0d0f;--bg2:#111318;--bg3:#181c24;
-    --text:#f0f0f0;--muted:#8a8fa8;--border:#1e2333;
-  }
-  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth}
-  a{color:inherit;text-decoration:none}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,15,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem}
-  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .nav-links{display:flex;gap:2rem}
-  .nav-links a{font-size:.85rem;color:var(--muted);transition:color .2s}
-  .nav-links a:hover{color:var(--accent)}
-  section{padding:6rem 2rem}
-  .container{max-width:1100px;margin:0 auto}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alberto Chaves · achaves.dev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green:#1a3a2a; --green-mid:#2d6a4f; --green-light:#52b788;
+      --purple:#2d1b4e; --purple-mid:#6d3fa0; --purple-light:#b57bee;
+      --accent:#74c69d; --accent2:#b57bee;
+      --bg:#0d0d0f; --bg2:#111318; --bg3:#181c24;
+      --text:#f0f0f0; --muted:#8a8fa8; --border:#1e2333;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
+    a { color: inherit; text-decoration: none; }
 
-  /* HERO */
-  #hero{padding:10rem 2rem 6rem;position:relative;overflow:hidden}
-  #hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(45,107,79,.25) 0%,transparent 70%);pointer-events:none}
-  #hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(109,63,160,.2) 0%,transparent 70%);pointer-events:none}
-  .hero-inner{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
-  .hero-tag{display:inline-block;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--green-mid);padding:.3rem .8rem;border-radius:20px;margin-bottom:1.5rem}
-  .hero-name{font-size:clamp(2.5rem,5vw,4.2rem);font-weight:900;line-height:1.05;margin-bottom:.5rem}
-  .hero-name span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .hero-title{font-size:1.1rem;color:var(--accent2);font-weight:500;margin-bottom:1rem}
-  .hero-subtitle{font-size:.95rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.8}
-  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn-primary{background:linear-gradient(135deg,var(--green-mid),var(--purple-mid));color:#fff;padding:.75rem 1.75rem;border-radius:8px;font-weight:500;font-size:.9rem;border:none;cursor:pointer;transition:opacity .2s;display:inline-block}
-  .btn-primary:hover{opacity:.85}
-  .btn-outline{border:1px solid var(--border);color:var(--text);padding:.75rem 1.75rem;border-radius:8px;font-weight:500;font-size:.9rem;background:transparent;cursor:pointer;transition:border-color .2s,color .2s;display:inline-block}
-  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-  .hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border)}
-  .stat-val{font-size:2rem;font-weight:700;color:var(--accent)}
-  .stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,15,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-size: 1.1rem; font-weight: 700; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
 
-  /* PHOTO */
-  .hero-photo-wrap{flex-shrink:0}
-  .hero-photo{width:220px;height:220px;border-radius:20px;object-fit:cover;border:2px solid var(--green-mid);display:block}
-  .hero-photo-placeholder{width:220px;height:220px;border-radius:20px;background:linear-gradient(135deg,var(--green),var(--purple));display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed var(--green-mid);color:var(--muted);font-size:.8rem;text-align:center;gap:.5rem}
-  .hero-photo-placeholder span{font-size:2.5rem}
+    /* CONTAINER */
+    .container { max-width: 1100px; margin: 0 auto; }
+    section { padding: 6rem 2rem; }
 
-  /* SECTION HEADER */
-  .section-tag{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:.75rem}
-  .section-sub{color:var(--muted);font-size:.93rem;max-width:520px;margin-bottom:3rem;line-height:1.8}
+    /* HERO */
+    #hero { padding: 10rem 2rem 6rem; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(45,107,79,.25) 0%, transparent 70%); pointer-events: none; }
+    #hero::after  { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(109,63,160,.2) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+    .hero-tag { display: inline-block; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--green-mid); padding: .3rem .8rem; border-radius: 20px; margin-bottom: 1.5rem; }
+    .hero-name { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 900; line-height: 1.05; margin-bottom: .5rem; }
+    .hero-name span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-title { font-size: 1.1rem; color: var(--accent2); font-weight: 500; margin-bottom: 1rem; }
+    .hero-subtitle { font-size: .95rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(135deg, var(--green-mid), var(--purple-mid)); color: #fff; padding: .75rem 1.75rem; border-radius: 8px; font-weight: 500; font-size: .9rem; border: none; cursor: pointer; transition: opacity .2s; display: inline-block; }
+    .btn-primary:hover { opacity: .85; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); padding: .75rem 1.75rem; border-radius: 8px; font-weight: 500; font-size: .9rem; background: transparent; cursor: pointer; transition: border-color .2s, color .2s; display: inline-block; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+    .stat-val { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
 
-  /* ABOUT */
-  #about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-  .about-text p{color:var(--muted);margin-bottom:1rem;line-height:1.8;font-size:.93rem}
-  .tag{display:inline-block;font-size:.7rem;background:rgba(116,198,157,.1);color:var(--accent);border:1px solid rgba(116,198,157,.2);padding:.2rem .6rem;border-radius:20px;margin:.3rem .2rem 0 0}
-  .tag-purple{background:rgba(181,123,238,.1);color:var(--accent2);border:1px solid rgba(181,123,238,.2)}
+    /* PHOTO */
+    .hero-photo-wrap { flex-shrink: 0; }
+    .hero-photo { width: 220px; height: 220px; border-radius: 20px; object-fit: cover; border: 2px solid var(--green-mid); display: block; }
 
-  /* SKILLS */
-  #skills{background:var(--bg2)}
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
-  .skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.1rem;text-align:center;transition:border-color .2s,transform .2s}
-  .skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-  .skill-icon{font-size:1.6rem;margin-bottom:.4rem}
-  .skill-name{font-size:.82rem;font-weight:500}
-  .skill-level{font-size:.68rem;color:var(--muted);margin-top:.2rem}
-  .skill-cat{font-size:.68rem;color:var(--accent2);margin-top:.15rem}
+    /* SECTION HEADER */
+    .section-tag { font-size: .7rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: .75rem; }
+    .section-sub { color: var(--muted); font-size: .93rem; max-width: 520px; margin-bottom: 3rem; line-height: 1.8; }
 
-  /* EXPERIENCE */
-  .timeline{position:relative;padding-left:2rem}
-  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green-mid),var(--purple-mid))}
-  .timeline-item{position:relative;margin-bottom:2.5rem}
-  .timeline-dot{position:absolute;left:-2.45rem;top:.4rem;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:2px solid var(--bg)}
-  .timeline-period{font-size:.73rem;color:var(--accent);font-weight:500;margin-bottom:.2rem}
-  .timeline-company{font-size:.82rem;color:var(--muted);margin-bottom:.25rem}
-  .timeline-role{font-size:1.05rem;font-weight:600;margin-bottom:.6rem}
-  .timeline-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
-  .timeline-bullets{list-style:none;margin:.6rem 0;padding:0}
-  .timeline-bullets li{font-size:.83rem;color:var(--muted);line-height:1.7;padding-left:1rem;position:relative;margin-bottom:.3rem}
-  .timeline-bullets li::before{content:'▹';position:absolute;left:0;color:var(--accent)}
+    /* ABOUT */
+    #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.8; font-size: .93rem; }
+    .tag { display: inline-block; font-size: .7rem; background: rgba(116,198,157,.1); color: var(--accent); border: 1px solid rgba(116,198,157,.2); padding: .2rem .6rem; border-radius: 20px; margin: .3rem .2rem 0 0; }
+    .tag-purple { background: rgba(181,123,238,.1); color: var(--accent2); border: 1px solid rgba(181,123,238,.2); }
 
-  /* COURSES */
-  #courses{background:var(--bg2)}
-  .courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-  .course-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:border-color .2s}
-  .course-card:hover{border-color:var(--purple-light)}
-  .course-platform{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:.4rem}
-  .course-name{font-size:.92rem;font-weight:600;margin-bottom:.4rem}
-  .course-meta{font-size:.78rem;color:var(--muted);line-height:1.5}
-  .course-year{font-size:.7rem;color:var(--muted);margin-top:.5rem}
-  .course-badge{display:inline-block;font-size:.65rem;padding:.2rem .6rem;border-radius:20px;margin-top:.6rem}
-  .badge-done{background:rgba(116,198,157,.1);color:var(--accent);border:1px solid rgba(116,198,157,.2)}
+    /* SKILLS */
+    #skills { background: var(--bg2); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
+    .skill-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; text-align: center; transition: border-color .2s, transform .2s; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-icon { font-size: 1.6rem; margin-bottom: .4rem; }
+    .skill-name { font-size: .82rem; font-weight: 500; }
+    .skill-level { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+    .skill-cat { font-size: .68rem; color: var(--accent2); margin-top: .15rem; }
 
-  /* CONTACT */
-  #contact{background:var(--bg2)}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-  .contact-links{display:flex;flex-direction:column;gap:.85rem;margin-top:1.5rem}
-  .contact-link{display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;transition:border-color .2s}
-  .contact-link:hover{border-color:var(--accent)}
-  .contact-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-  .contact-label{font-size:.75rem;color:var(--muted)}
-  .contact-val{font-size:.88rem;font-weight:500}
-  .contact-form{display:flex;flex-direction:column;gap:1rem}
-  .contact-form input,.contact-form textarea{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;color:var(--text);font-family:inherit;font-size:.9rem;transition:border-color .2s;outline:none}
-  .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
-  .contact-form textarea{resize:vertical;min-height:120px}
-  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+    /* EXPERIENCE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green-mid), var(--purple-mid)); }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot { position: absolute; left: -2.45rem; top: .4rem; width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: 2px solid var(--bg); }
+    .timeline-period { font-size: .73rem; color: var(--accent); font-weight: 500; margin-bottom: .2rem; }
+    .timeline-company { font-size: .82rem; color: var(--muted); margin-bottom: .25rem; }
+    .timeline-role { font-size: 1.05rem; font-weight: 600; margin-bottom: .6rem; }
+    .timeline-bullets { list-style: none; margin: .6rem 0; padding: 0; }
+    .timeline-bullets li { font-size: .83rem; color: var(--muted); line-height: 1.7; padding-left: 1rem; position: relative; margin-bottom: .3rem; }
+    .timeline-bullets li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
 
-  @media(max-width:768px){
-    .hero-inner{grid-template-columns:1fr}
-    .hero-photo-wrap{display:none}
-    #about .about-grid,.contact-grid{grid-template-columns:1fr}
-    .hero-stats{gap:1.5rem;flex-wrap:wrap}
-    .nav-links{display:none}
-  }
-</style>
+    /* COURSES */
+    #courses { background: var(--bg2); }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .course-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; transition: border-color .2s; }
+    .course-card:hover { border-color: var(--purple-light); }
+    .course-platform { font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent2); margin-bottom: .4rem; }
+    .course-name { font-size: .92rem; font-weight: 600; margin-bottom: .4rem; }
+    .course-meta { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+    .course-year { font-size: .7rem; color: var(--muted); margin-top: .5rem; }
+    .badge { display: inline-block; font-size: .65rem; padding: .2rem .6rem; border-radius: 20px; margin-top: .6rem; }
+    .badge-done { background: rgba(116,198,157,.1); color: var(--accent); border: 1px solid rgba(116,198,157,.2); }
+    .badge-prog { background: rgba(181,123,238,.1); color: var(--accent2); border: 1px solid rgba(181,123,238,.2); }
+
+    /* CONTACT */
+    #contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-links { display: flex; flex-direction: column; gap: .85rem; margin-top: 1.5rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; padding: .9rem 1.1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; transition: border-color .2s; }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-label { font-size: .75rem; color: var(--muted); }
+    .contact-val { font-size: .88rem; font-weight: 500; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input, .contact-form textarea { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: .85rem 1rem; color: var(--text); font-family: inherit; font-size: .9rem; transition: border-color .2s; outline: none; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+      #about .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <span class="logo">achaves.dev</span>
-    <div class="nav-links">
-      <a href="#about">Sobre mí</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experiencia</a>
-      <a href="formacion.html">Formación</a>
-      <a href="contacto.html">Contacto</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag">Senior Software Engineer · 14 años de experiencia</div>
-        <h1 class="hero-name">Alberto<br><span>Chaves Villegas</span></h1>
-        <div class="hero-title">Senior Software Engineer &amp; Technical Lead</div>
-        <p class="hero-subtitle">Especialista en arquitectura, desarrollo y automatización de plataformas críticas de alta transaccionalidad para los sectores financiero y gubernamental. Experto en .NET Core / C#, Azure y ReactJS.</p>
-        <div class="hero-ctas">
-          <a href="#experience" class="btn-primary">Ver experiencia</a>
-          <a href="#contact" class="btn-outline">Contáctame</a>
-        </div>
-        <div class="hero-stats">
-          <div><div class="stat-val">14+</div><div class="stat-label">Años de experiencia</div></div>
-          <div><div class="stat-val">3</div><div class="stat-label">Empresas líderes</div></div>
-          <div><div class="stat-val">5+</div><div class="stat-label">Certificaciones</div></div>
-        </div>
-      </div>
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-placeholder" id="photoPlaceholder">
-          <span>👤</span>
-          <div>Sube tu foto<br>para mostrarla aquí</div>
-        </div>
-        <img id="heroPhoto" class="hero-photo" style="display:none" src="" alt="Alberto Chaves"/>
+  <nav>
+    <div class="nav-inner">
+      <span class="logo">achaves.dev</span>
+      <div class="nav-links">
+        <a href="#about">Sobre mí</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experiencia</a>
+        <a href="formacion.html">Formación</a>
+        <a href="contacto.html">Contacto</a>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div>
-        <div class="section-tag">Perfil profesional</div>
-        <h2 class="section-title">Sobre mí</h2>
-        <p>Ingeniero en Sistemas Senior y Líder Técnico con 14 años de experiencia especializándome en la arquitectura, desarrollo, automatización y despliegue de plataformas críticas de alta transaccionalidad.</p>
-        <p>He trabajado en sectores financiero y gubernamental, liderando proyectos de alta sensibilidad como sistemas de Adquirencia Bancaria bajo estándares ISO 8583 e ISO 20022. Me enfoco en la excelencia técnica mediante Clean Code, Principios SOLID y Pruebas Unitarias.</p>
-        <p>Apasionado por transformar procesos manuales en soluciones automatizadas que generan impacto real en las organizaciones.</p>
-        <div style="margin-top:1.5rem">
-          <span class="tag">📍 Tibás, San José, CR</span>
-          <span class="tag">💻 Full Stack</span>
-          <span class="tag tag-purple">🏦 Fintech</span>
-          <span class="tag tag-purple">🏛️ Sector Público</span>
-          <span class="tag">☁️ Azure</span>
-        </div>
-      </div>
-      <div>
-        <div class="section-tag">Áreas de especialización</div>
-        <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem">
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
-            <div style="font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:.3rem">Arquitectura &amp; Cloud</div>
-            <div style="font-size:.82rem;color:var(--muted)">Diseño de soluciones escalables en Azure, DevOps, microservicios y pipelines CI/CD.</div>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Senior Software Engineer · 14 años de experiencia</div>
+          <h1 class="hero-name">Alberto<br><span>Chaves Villegas</span></h1>
+          <div class="hero-title">Senior Software Engineer &amp; Technical Lead</div>
+          <p class="hero-subtitle">Especialista en arquitectura, desarrollo y automatización de plataformas críticas de alta transaccionalidad para los sectores financiero y gubernamental. Experto en .NET Core / C#, Azure y ReactJS.</p>
+          <div class="hero-ctas">
+            <a href="#experience" class="btn-primary">Ver experiencia</a>
+            <a href="contacto.html" class="btn-outline">Contáctame</a>
           </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
-            <div style="font-size:.82rem;font-weight:600;color:var(--accent2);margin-bottom:.3rem">Sistemas Financieros</div>
-            <div style="font-size:.82rem;color:var(--muted)">Adquirencia bancaria, procesamiento de pagos, estándares ISO 8583 e ISO 20022.</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
-            <div style="font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:.3rem">Liderazgo Técnico</div>
-            <div style="font-size:.82rem;color:var(--muted)">Mentoría, code reviews, Scrum Master interino, coordinación con proveedores de TI.</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
-            <div style="font-size:.82rem;font-weight:600;color:var(--accent2);margin-bottom:.3rem">Automatización de Procesos</div>
-            <div style="font-size:.82rem;color:var(--muted)">Reducción de tareas manuales, minimización de error humano y optimización de tiempos de ejecución.</div>
+          <div class="hero-stats">
+            <div><div class="stat-val">14+</div><div class="stat-label">Años de experiencia</div></div>
+            <div><div class="stat-val">3</div><div class="stat-label">Empresas líderes</div></div>
+            <div><div class="stat-val">11+</div><div class="stat-label">Certificaciones</div></div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <div class="section-tag">Tecnologías</div>
-    <h2 class="section-title">Skills &amp; herramientas</h2>
-    <p class="section-sub">Stack tecnológico con el que he trabajado a lo largo de mi carrera.</p>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">C# / .NET Core</div><div class="skill-level">Experto</div><div class="skill-cat">Backend</div></div>
-      <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-name">ReactJS</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
-      <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">TypeScript</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
-      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">Microsoft Azure</div><div class="skill-level">Avanzado</div><div class="skill-cat">Cloud</div></div>
-      <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level">Experto</div><div class="skill-cat">Base de datos</div></div>
-      <div class="skill-card"><div class="skill-icon">🐳</div><div class="skill-name">Docker</div><div class="skill-level">Intermedio</div><div class="skill-cat">DevOps</div></div>
-      <div class="skill-card"><div class="skill-icon">🔧</div><div class="skill-name">Azure DevOps</div><div class="skill-level">Avanzado</div><div class="skill-cat">CI/CD</div></div>
-      <div class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">Oracle PL/SQL</div><div class="skill-level">Avanzado</div><div class="skill-cat">Base de datos</div></div>
-      <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Java EE</div><div class="skill-level">Avanzado</div><div class="skill-cat">Backend</div></div>
-      <div class="skill-card"><div class="skill-icon">🅰️</div><div class="skill-name">Angular</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
-      <div class="skill-card"><div class="skill-icon">🧪</div><div class="skill-name">xUnit</div><div class="skill-level">Avanzado</div><div class="skill-cat">Testing</div></div>
-      <div class="skill-card"><div class="skill-icon">🌿</div><div class="skill-name">Git / GitHub</div><div class="skill-level">Experto</div><div class="skill-cat">Control de versiones</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <div class="section-tag">Trayectoria</div>
-    <h2 class="section-title">Experiencia laboral</h2>
-    <p class="section-sub">14 años construyendo soluciones críticas en el sector financiero y gubernamental de Costa Rica.</p>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Junio 2022 – Junio 2026</div>
-        <div class="timeline-company">Banco BCT</div>
-        <div class="timeline-role">Ingeniero en Sistemas Senior</div>
-        <ul class="timeline-bullets">
-          <li>Lideré el desarrollo e integración del proyecto crítico de Adquirencia Bancaria bajo los estándares ISO 8583 e ISO 20022.</li>
-          <li>Diseñé e implementé soluciones escalables en Azure App Services y Azure SQL, con gestión del ciclo de vida en Azure DevOps.</li>
-          <li>Automaticé tareas operativas recurrentes, logrando reducción drástica en tiempos de ejecución y minimizando el error humano.</li>
-          <li>Implementé pruebas unitarias con xUnit elevando el porcentaje de cobertura de código del equipo.</li>
-          <li>Construí APIs REST en .NET Core / C# y componentes web dinámicos en ReactJS / TypeScript.</li>
-          <li>Coordiné y validé técnicamente entregables de proveedores externos de TI.</li>
-        </ul>
-        <div><span class="tag">.NET Core / C#</span><span class="tag">ReactJS</span><span class="tag">Azure</span><span class="tag">SQL Server</span><span class="tag">xUnit</span><span class="tag">ISO 8583</span></div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Diciembre 2013 – Enero 2021</div>
-        <div class="timeline-company">Akros Technologies – Multimoney</div>
-        <div class="timeline-role">Líder Técnico</div>
-        <ul class="timeline-bullets">
-          <li>Traduje requerimientos comerciales complejos en arquitecturas técnicas robustas para la plataforma web Fintech bajo .NET MVC, PHP y MySQL / SQL Server.</li>
-          <li>Instauré prácticas de code reviews y mentoría técnica al equipo, reduciendo la tasa de errores en producción.</li>
-          <li>Desempeñé como Scrum Master interino, facilitando ceremonias ágiles y optimizando el throughput del equipo.</li>
-        </ul>
-        <div><span class="tag">ASP.NET MVC</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">SQL Server</span><span class="tag tag-purple">Scrum Master</span></div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Julio 2011 – Julio 2023</div>
-        <div class="timeline-company">GBSYS</div>
-        <div class="timeline-role">Software Developer</div>
-        <ul class="timeline-bullets">
-          <li>Participé en la transformación digital del sistema central del Registro Nacional de Costa Rica, migrando desde COBOL a Java EE.</li>
-          <li>Desarrollé procedimientos almacenados complejos en Oracle PL/SQL para migrar millones de registros con cero pérdida de integridad.</li>
-        </ul>
-        <div><span class="tag">Java EE</span><span class="tag">Oracle PL/SQL</span><span class="tag tag-purple">COBOL Migration</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- COURSES -->
-<section id="courses">
-  <div class="container">
-    <div class="section-tag">Formación</div>
-    <h2 class="section-title">Educación &amp; certificaciones</h2>
-    <p class="section-sub">Aprendizaje continuo como pilar de mi carrera profesional. <a href="formacion.html" style="color:var(--accent);text-decoration:underline;">Ver detalle completo →</a></p>
-    <div class="courses-grid">
-      <div class="course-card">
-        <div class="course-platform">Instituto Tecnológico de Costa Rica (TEC)</div>
-        <div class="course-name">Bachillerato en Computación</div>
-        <div class="course-meta">Sede Santa Clara · Formación universitaria base en ingeniería de sistemas y computación.</div>
-        <span class="course-badge badge-done">✓ Graduado</span>
-      </div>
-      <div class="course-card">
-        <div class="course-platform">Udemy · Fernando Herrera</div>
-        <div class="course-name">Principios SOLID y Clean Code</div>
-        <div class="course-meta">Diseño de software robusto, mantenible y escalable mediante principios SOLID y código limpio.</div>
-        <div class="course-year">2024</div>
-        <span class="course-badge badge-done">✓ Certificado</span>
-      </div>
-      <div class="course-card">
-        <div class="course-platform">Centro Cultural CR–Norteamericano</div>
-        <div class="course-name">Programa Avanzado de Inglés Conversacional</div>
-        <div class="course-meta">Dominio del inglés en entornos profesionales y técnicos internacionales.</div>
-        <div class="course-year">2023</div>
-        <span class="course-badge badge-done">✓ Completado</span>
-      </div>
-      <div class="course-card">
-        <div class="course-platform">Udemy</div>
-        <div class="course-name">TypeScript — Especialización Técnica</div>
-        <div class="course-meta">Tipado estático, interfaces, generics y patrones avanzados en TypeScript.</div>
-        <div class="course-year">2023</div>
-        <span class="course-badge badge-done">✓ Completado</span>
-      </div>
-      <div class="course-card">
-        <div class="course-platform">Udemy</div>
-        <div class="course-name">Angular: De Cero a Experto</div>
-        <div class="course-meta">Desarrollo de SPAs con Angular, RxJS, Angular Material y arquitecturas escalables.</div>
-        <div class="course-year">2021</div>
-        <span class="course-badge badge-done">✓ Completado</span>
-      </div>
-      <div class="course-card">
-        <div class="course-platform">Udemy</div>
-        <div class="course-name">Flutter SDK</div>
-        <div class="course-meta">Desarrollo de aplicaciones móviles multiplataforma con Flutter y Dart.</div>
-        <div class="course-year">2019</div>
-        <span class="course-badge badge-done">✓ Completado</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-tag">Contacto</div>
-    <h2 class="section-title">¿Hablamos?</h2>
-    <div class="contact-grid">
-      <div>
-        <p style="color:var(--muted);line-height:1.8;font-size:.93rem">¿Tienes un proyecto, una propuesta de trabajo o simplemente quieres conectar? Escríbeme y con gusto conversamos.</p>
-        <div class="contact-links">
-          <a href="mailto:me@achaves.dev" class="contact-link">
-            <div class="contact-icon" style="background:rgba(116,198,157,.1)">📧</div>
-            <div><div class="contact-label">Email</div><div class="contact-val">me@achaves.dev</div></div>
-          </a>
-          <a href="tel:+50685098141" class="contact-link">
-            <div class="contact-icon" style="background:rgba(116,198,157,.08)">📱</div>
-            <div><div class="contact-label">Teléfono</div><div class="contact-val">+506 8509-8141</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/alberto-chaves-villegas-99788058/" class="contact-link">
-            <div class="contact-icon" style="background:rgba(181,123,238,.1)">💼</div>
-            <div><div class="contact-label">LinkedIn</div><div class="contact-val">alberto-chaves-villegas</div></div>
-          </a>
-          <a href="https://github.com/ajchv23" class="contact-link">
-            <div class="contact-icon" style="background:rgba(181,123,238,.12)">🐙</div>
-            <div><div class="contact-label">GitHub</div><div class="contact-val">github.com/ajchv23</div></div>
-          </a>
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="resources/img/profile.jpg" alt="Alberto Chaves Villegas"/>
         </div>
       </div>
-      <div class="contact-form">
-        <input type="text" placeholder="Tu nombre"/>
-        <input type="email" placeholder="Tu correo"/>
-        <textarea placeholder="Cuéntame sobre tu proyecto o propuesta..."></textarea>
-        <button class="btn-primary" style="width:fit-content">Enviar mensaje →</button>
-        <a href="contacto.html" style="font-size:.8rem;color:var(--muted);text-align:center;margin-top:.5rem;">o visita la página completa de contacto →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-tag">Perfil profesional</div>
+          <h2 class="section-title">Sobre mí</h2>
+          <div class="about-text">
+            <p>Ingeniero en Sistemas Senior y Líder Técnico con 14 años de experiencia especializándome en la arquitectura, desarrollo, automatización y despliegue de plataformas críticas de alta transaccionalidad.</p>
+            <p>He trabajado en sectores financiero y gubernamental, liderando proyectos de alta sensibilidad como sistemas de Adquirencia Bancaria bajo estándares ISO 8583 e ISO 20022. Me enfoco en la excelencia técnica mediante Clean Code, Principios SOLID y Pruebas Unitarias.</p>
+            <p>Apasionado por transformar procesos manuales en soluciones automatizadas que generan impacto real en las organizaciones.</p>
+          </div>
+          <div style="margin-top:1.5rem">
+            <span class="tag">📍 Tibás, San José, CR</span>
+            <span class="tag">💻 Full Stack</span>
+            <span class="tag tag-purple">🏦 Fintech</span>
+            <span class="tag tag-purple">🏛️ Sector Público</span>
+            <span class="tag">☁️ Azure</span>
+          </div>
+        </div>
+        <div>
+          <div class="section-tag">Áreas de especialización</div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem">
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+              <div style="font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:.3rem">Arquitectura &amp; Cloud</div>
+              <div style="font-size:.82rem;color:var(--muted)">Diseño de soluciones escalables en Azure, DevOps, microservicios y pipelines CI/CD.</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+              <div style="font-size:.82rem;font-weight:600;color:var(--accent2);margin-bottom:.3rem">Sistemas Financieros</div>
+              <div style="font-size:.82rem;color:var(--muted)">Adquirencia bancaria, procesamiento de pagos, estándares ISO 8583 e ISO 20022.</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+              <div style="font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:.3rem">Liderazgo Técnico</div>
+              <div style="font-size:.82rem;color:var(--muted)">Mentoría, code reviews, Scrum Master interino, coordinación con proveedores de TI.</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem">
+              <div style="font-size:.82rem;font-weight:600;color:var(--accent2);margin-bottom:.3rem">Automatización de Procesos</div>
+              <div style="font-size:.82rem;color:var(--muted)">Reducción de tareas manuales, minimización de error humano y optimización de tiempos de ejecución.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>© 2026 <strong>Alberto Chaves Villegas</strong> · achaves.dev · Tibás, San José, Costa Rica</p>
-</footer>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-tag">Tecnologías</div>
+      <h2 class="section-title">Skills &amp; herramientas</h2>
+      <p class="section-sub">Stack tecnológico con el que he trabajado a lo largo de mi carrera.</p>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">C# / .NET Core</div><div class="skill-level">Experto</div><div class="skill-cat">Backend</div></div>
+        <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-name">ReactJS</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
+        <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">TypeScript</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
+        <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">Microsoft Azure</div><div class="skill-level">Avanzado</div><div class="skill-cat">Cloud</div></div>
+        <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Server</div><div class="skill-level">Experto</div><div class="skill-cat">Base de datos</div></div>
+        <div class="skill-card"><div class="skill-icon">🐳</div><div class="skill-name">Docker</div><div class="skill-level">Intermedio</div><div class="skill-cat">DevOps</div></div>
+        <div class="skill-card"><div class="skill-icon">🔧</div><div class="skill-name">Azure DevOps</div><div class="skill-level">Avanzado</div><div class="skill-cat">CI/CD</div></div>
+        <div class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">Oracle PL/SQL</div><div class="skill-level">Avanzado</div><div class="skill-cat">Base de datos</div></div>
+        <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Java EE</div><div class="skill-level">Avanzado</div><div class="skill-cat">Backend</div></div>
+        <div class="skill-card"><div class="skill-icon">🅰️</div><div class="skill-name">Angular</div><div class="skill-level">Avanzado</div><div class="skill-cat">Frontend</div></div>
+        <div class="skill-card"><div class="skill-icon">🧪</div><div class="skill-name">xUnit</div><div class="skill-level">Avanzado</div><div class="skill-cat">Testing</div></div>
+        <div class="skill-card"><div class="skill-icon">🌿</div><div class="skill-name">Git / GitHub</div><div class="skill-level">Experto</div><div class="skill-cat">Control de versiones</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-tag">Trayectoria</div>
+      <h2 class="section-title">Experiencia laboral</h2>
+      <p class="section-sub">14 años construyendo soluciones críticas en el sector financiero y gubernamental de Costa Rica.</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Junio 2022 – Junio 2026</div>
+          <div class="timeline-company">Banco BCT</div>
+          <div class="timeline-role">Ingeniero en Sistemas Senior</div>
+          <ul class="timeline-bullets">
+            <li>Lideré el desarrollo e integración del proyecto crítico de Adquirencia Bancaria bajo los estándares ISO 8583 e ISO 20022.</li>
+            <li>Diseñé e implementé soluciones escalables en Azure App Services y Azure SQL, con gestión del ciclo de vida en Azure DevOps.</li>
+            <li>Automaticé tareas operativas recurrentes, logrando reducción drástica en tiempos de ejecución y minimizando el error humano.</li>
+            <li>Implementé pruebas unitarias con xUnit elevando el porcentaje de cobertura de código del equipo.</li>
+            <li>Construí APIs REST en .NET Core / C# y componentes web dinámicos en ReactJS / TypeScript.</li>
+            <li>Coordiné y validé técnicamente entregables de proveedores externos de TI.</li>
+          </ul>
+          <div><span class="tag">.NET Core / C#</span><span class="tag">ReactJS</span><span class="tag">Azure</span><span class="tag">SQL Server</span><span class="tag">xUnit</span><span class="tag">ISO 8583</span></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Diciembre 2013 – Enero 2021</div>
+          <div class="timeline-company">Akros Technologies – Multimoney</div>
+          <div class="timeline-role">Líder Técnico</div>
+          <ul class="timeline-bullets">
+            <li>Traduje requerimientos comerciales complejos en arquitecturas técnicas robustas para la plataforma web Fintech bajo .NET MVC, PHP y MySQL / SQL Server.</li>
+            <li>Instauré prácticas de code reviews y mentoría técnica al equipo, reduciendo la tasa de errores en producción.</li>
+            <li>Desempeñé como Scrum Master interino, facilitando ceremonias ágiles y optimizando el throughput del equipo.</li>
+          </ul>
+          <div><span class="tag">ASP.NET MVC</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">SQL Server</span><span class="tag tag-purple">Scrum Master</span></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Julio 2011 – Julio 2023</div>
+          <div class="timeline-company">GBSYS</div>
+          <div class="timeline-role">Software Developer</div>
+          <ul class="timeline-bullets">
+            <li>Participé en la transformación digital del sistema central del Registro Nacional de Costa Rica, migrando desde COBOL a Java EE.</li>
+            <li>Desarrollé procedimientos almacenados complejos en Oracle PL/SQL para migrar millones de registros con cero pérdida de integridad.</li>
+          </ul>
+          <div><span class="tag">Java EE</span><span class="tag">Oracle PL/SQL</span><span class="tag tag-purple">COBOL Migration</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-tag">Formación</div>
+      <h2 class="section-title">Educación &amp; certificaciones</h2>
+      <p class="section-sub">Aprendizaje continuo como pilar de mi carrera profesional. <a href="formacion.html" style="color:var(--accent);text-decoration:underline;">Ver detalle completo →</a></p>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-platform">TEC — Costa Rica</div>
+          <div class="course-name">Bachillerato en Computación</div>
+          <div class="course-meta">Ingeniería de sistemas, estructuras de datos, bases de datos y arquitectura de software.</div>
+          <div class="course-year">2011</div>
+          <span class="badge badge-done">✓ Graduado</span>
+        </div>
+        <div class="course-card">
+          <div class="course-platform">Udemy</div>
+          <div class="course-name">Azure Solutions Architect: The Ultimate Bundle</div>
+          <div class="course-meta">Arquitecturas cloud, alta disponibilidad, seguridad y gobernanza en Azure.</div>
+          <div class="course-year">2026</div>
+          <span class="badge badge-prog">⏳ En proceso</span>
+        </div>
+        <div class="course-card">
+          <div class="course-platform">Coursiv</div>
+          <div class="course-name">Master of Claude &amp; Master of DeepSeek</div>
+          <div class="course-meta">Uso avanzado de modelos de IA generativa para productividad y desarrollo técnico.</div>
+          <div class="course-year">2026</div>
+          <span class="badge badge-done">✓ Completado</span>
+        </div>
+        <div class="course-card">
+          <div class="course-platform">Udemy · Fernando Herrera</div>
+          <div class="course-name">Principios SOLID y Clean Code</div>
+          <div class="course-meta">Diseño OOP robusto, mantenible y escalable.</div>
+          <div class="course-year">2024</div>
+          <span class="badge badge-done">✓ Completado</span>
+        </div>
+        <div class="course-card">
+          <div class="course-platform">Udemy</div>
+          <div class="course-name">React: De cero a experto &amp; TypeScript</div>
+          <div class="course-meta">Hooks, MERN Stack, tipado estático y patrones avanzados.</div>
+          <div class="course-year">2023</div>
+          <span class="badge badge-done">✓ Completado</span>
+        </div>
+        <div class="course-card">
+          <div class="course-platform">Udemy</div>
+          <div class="course-name">Angular: De cero a experto</div>
+          <div class="course-meta">RxJS, Angular Material, formularios reactivos y arquitecturas SPA.</div>
+          <div class="course-year">2020</div>
+          <span class="badge badge-done">✓ Completado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-tag">Contacto</div>
+      <h2 class="section-title">¿Hablamos?</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--muted);line-height:1.8;font-size:.93rem">¿Tienes un proyecto, una propuesta de trabajo o simplemente quieres conectar? Escríbeme y con gusto conversamos.</p>
+          <div class="contact-links">
+            <a href="mailto:me@achaves.dev" class="contact-link">
+              <div class="contact-icon" style="background:rgba(116,198,157,.1)">📧</div>
+              <div><div class="contact-label">Email</div><div class="contact-val">me@achaves.dev</div></div>
+            </a>
+            <a href="tel:+50685098141" class="contact-link">
+              <div class="contact-icon" style="background:rgba(116,198,157,.08)">📱</div>
+              <div><div class="contact-label">Teléfono</div><div class="contact-val">+506 8509-8141</div></div>
+            </a>
+            <a href="https://www.linkedin.com/in/alberto-chaves-villegas-99788058/" class="contact-link">
+              <div class="contact-icon" style="background:rgba(181,123,238,.1)">💼</div>
+              <div><div class="contact-label">LinkedIn</div><div class="contact-val">alberto-chaves-villegas</div></div>
+            </a>
+            <a href="https://github.com/ajchv23" class="contact-link">
+              <div class="contact-icon" style="background:rgba(181,123,238,.12)">🐙</div>
+              <div><div class="contact-label">GitHub</div><div class="contact-val">github.com/ajchv23</div></div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <input type="text" placeholder="Tu nombre"/>
+          <input type="email" placeholder="Tu correo"/>
+          <textarea placeholder="Cuéntame sobre tu proyecto o propuesta..."></textarea>
+          <button class="btn-primary" style="width:fit-content">Enviar mensaje →</button>
+          <a href="contacto.html" style="font-size:.8rem;color:var(--muted);text-align:center;margin-top:.5rem;">o visita la página completa de contacto →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 <strong>Alberto Chaves Villegas</strong> · achaves.dev · Tibás, San José, Costa Rica</p>
+  </footer>
 
 </body>
 </html>
